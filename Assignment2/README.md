@@ -27,13 +27,13 @@ pip install numpy matplotlib scipy
 
 ## Question 1: Parzen Window Density Estimation
 
-This question investigates the expected Parzen-window estimate for a uniform distribution \(U(0,a)\), using the exponential window function.
+This question investigates the expected Parzen-window estimate for a uniform distribution $U(0,a)$, using the exponential window function.
 
-The mean estimate is implemented and plotted for \(a=1\) and three different window widths:
+The mean estimate is implemented and plotted for $a=1$ and three different window widths:
 
-\[
+$$
 h_n \in \{1,\ 0.25,\ 0.0625\}
-\]
+$$
 
 The plots demonstrate how the bandwidth affects the estimated density and its boundary bias.
 
@@ -41,17 +41,17 @@ The plots demonstrate how the bandwidth affects the estimated density and its bo
 
 The bandwidth required to achieve less than 1% relative bias over 99% of the interval is calculated using:
 
-\[
+$$
 h_n \leq \frac{0.01}{-\ln(0.01)}
-\]
+$$
 
-For \(a=1\), this gives:
+For $a=1$, this gives:
 
-\[
+$$
 h_n \approx 0.00217
-\]
+$$
 
-The resulting estimate is plotted over the interval \(0 \leq x \leq 0.05\).
+The resulting estimate is plotted over the interval $0 \leq x \leq 0.05$.
 
 <img src="figs/parzen_small_bandwidth.png" width="500" alt="Parzen estimate with small bandwidth">
 
@@ -61,28 +61,38 @@ A non-parametric Parzen-window classifier is implemented using a spherical Gauss
 
 The training dataset contains three categories, each represented by ten three-dimensional samples.
 
-The classifier evaluates three test points:
+Three test points are classified:
 
-\[
-(0.50,1.0,0.0)^T
-\]
+$$
+x_1 = (0.50,\ 1.0,\ 0.0)^T
+$$
 
-\[
-(0.31,1.51,-0.50)^T
-\]
+$$
+x_2 = (0.31,\ 1.51,\ -0.50)^T
+$$
 
-\[
-(-0.3,0.44,-0.1)^T
-\]
+$$
+x_3 = (-0.3,\ 0.44,\ -0.1)^T
+$$
 
 Classification is performed using two bandwidth values:
 
-- \(h=1.0\)
-- \(h=0.1\)
+- $h=1.0$
+- $h=0.1$
 
 For each test point, the Gaussian kernel contributions from the training samples are summed separately for each class. The predicted category is the one with the highest estimated density.
 
-This experiment demonstrates how the bandwidth controls the influence of nearby training samples and affects the classification process.
+The Gaussian kernel is proportional to:
+
+$$
+\phi\left(\frac{x-x_i}{h}\right)
+\propto
+\exp\left(
+-\frac{(x-x_i)^T(x-x_i)}{2h^2}
+\right)
+$$
+
+This experiment demonstrates how the bandwidth controls the locality of the density estimates and affects classification decisions.
 
 ## Question 11: Maximum Likelihood Estimation
 
@@ -90,24 +100,37 @@ This question uses the data in `normal.data.txt`, which is assumed to be a rando
 
 The following statistical methods are implemented:
 
-**Parameter estimation**
+### Parameter Estimation
+
 - Numerical maximum likelihood estimation of the mean and variance.
 - Closed-form maximum likelihood estimates.
 - Comparison of numerical and analytical solutions.
 - Verification that the negative log-likelihood is minimized at the estimated parameters.
 
-**Asymptotic covariance and confidence intervals**
+For a normal distribution, the maximum likelihood estimates are:
+
+$$
+\hat{\mu} = \frac{1}{n}\sum_{i=1}^{n}x_i
+$$
+
+$$
+\hat{\sigma}^2 =
+\frac{1}{n}\sum_{i=1}^{n}(x_i-\hat{\mu})^2
+$$
+
+### Asymptotic Covariance and Confidence Intervals
+
 - Estimation of the asymptotic covariance matrix.
 - Calculation of an improved covariance estimate using the closed-form solution.
 - A large-sample 95% confidence interval for the variance.
 
-**Hypothesis testing**
+### Hypothesis Testing
 
 The null hypothesis
 
-\[
+$$
 H_0:\mu=103
-\]
+$$
 
 is tested using three methods:
 
@@ -117,13 +140,13 @@ is tested using three methods:
 
 The test statistics and p-values are calculated and compared.
 
-**Coefficient of variation**
+### Coefficient of Variation
 
-Finally, the coefficient of variation is estimated:
+The coefficient of variation is estimated as:
 
-\[
+$$
 CV=\frac{\sigma}{\mu}
-\]
+$$
 
 Its invariance under multiplication by a positive constant is considered, and a 95% confidence interval is calculated using the delta method.
 
@@ -133,64 +156,74 @@ This question investigates nonlinear regression using Gaussian basis functions a
 
 The objective is to approximate the sinc function:
 
-\[
+$$
 f(x)=\frac{\sin(3x)}{3x}
-\]
+$$
 
-with the value at \(x=0\) defined by continuity as \(f(0)=1\).
+with the value at $x=0$ defined by continuity as $f(0)=1$.
 
 The training data consists of 25 uniformly sampled input points with additive zero-mean Gaussian noise:
 
-\[
-y=f(x)+\epsilon,\qquad \epsilon\sim N(0,0.01)
-\]
+$$
+y=f(x)+\epsilon
+$$
 
-**Gaussian basis functions**
+where:
+
+$$
+x\sim U(0,1), \qquad \epsilon\sim N(0,0.01)
+$$
+
+### Gaussian Basis Functions
 
 The regression model uses 21 Gaussian basis functions:
 
-\[
+$$
 h_j(x)=
-\exp\left(-\frac{(x-\mu_j)^2}{2\sigma^2}\right)
-\]
+\exp\left(
+-\frac{(x-\mu_j)^2}{2\sigma^2}
+\right)
+$$
 
-The basis function means are equally spaced over \([0,1]\), with:
+The basis function means are equally spaced over $[0,1]$, with:
 
-\[
+$$
 \sigma=0.04
-\]
+$$
 
 A bias term is also included, giving 22 coefficients in total.
 
-**Ridge regression**
+### Ridge Regression
 
 The regression coefficients are estimated using:
 
-\[
-\hat{\beta}=
-(H^TH+\lambda I)^{-1}H^Ty
-\]
+$$
+\hat{\beta} =
+(H^T H+\lambda I)^{-1}H^T y
+$$
 
 Three regularization parameters are investigated:
 
-\[
+$$
 \lambda\in\{0.001,\ 0.05,\ 5\}
-\]
+$$
 
-For each value of \(\lambda\), the estimated function from a single experiment is compared with the average estimate obtained from 100 independent experiments.
+For each value of $\lambda$, the estimated function from a single experiment is compared with the average estimate obtained from 100 independent experiments.
 
 <img src="figs/regression_lambda_comparison.png" width="600" alt="Regression fits for different regularization parameters">
 
-**Error versus regularization**
+### Error Versus Regularization
 
 The average squared estimation error is also calculated over 100 experiments for a range of regularization values.
 
 The error is evaluated on 100 equally spaced test points:
 
-\[
+$$
 err=\frac{1}{m}\sum_{i=1}^{m}
-\left(f(z_i)-\hat f(z_i)\right)^2
-\]
+\left(f(z_i)-\hat{f}(z_i)\right)^2
+$$
+
+where $m=100$.
 
 The resulting plot illustrates the effect of regularization on model performance.
 
@@ -198,9 +231,9 @@ The resulting plot illustrates the effect of regularization on model performance
 
 The experiment demonstrates the bias-variance trade-off:
 
-- **Small \(\lambda\):** Weak regularization can cause overfitting and high variance.
-- **Moderate \(\lambda\):** A suitable balance between bias and variance can improve estimation accuracy.
-- **Large \(\lambda\):** Strong regularization can cause underfitting and high bias.
+- **Small $\lambda$:** Weak regularization can cause overfitting and high variance.
+- **Moderate $\lambda$:** A suitable balance between bias and variance can improve estimation accuracy.
+- **Large $\lambda$:** Strong regularization can cause underfitting and high bias.
 
 ## Repository Structure
 
