@@ -37,7 +37,9 @@ $$
 
 The plots demonstrate how the bandwidth affects the estimated density and its boundary bias.
 
-<img src="figs/parzen_window_estimates.png" width="500" alt="Parzen window estimates for different bandwidths">
+<p align="center">
+  <img src="figs/parzen_window_estimates.png" width="600" alt="Parzen window estimates for different bandwidths">
+</p>
 
 The bandwidth required to achieve less than 1% relative bias over 99% of the interval is calculated using:
 
@@ -53,7 +55,9 @@ $$
 
 The resulting estimate is plotted over the interval $0 \leq x \leq 0.05$.
 
-<img src="figs/parzen_small_bandwidth.png" width="500" alt="Parzen estimate with small bandwidth">
+<p align="center">
+  <img src="figs/parzen_small_bandwidth.png" width="600" alt="Parzen estimate with small bandwidth">
+</p>
 
 ## Question 10: Parzen Window Classification
 
@@ -210,7 +214,9 @@ $$
 
 For each value of $\lambda$, the estimated function from a single experiment is compared with the average estimate obtained from 100 independent experiments.
 
-<img src="figs/regression_lambda_comparison.png" width="600" alt="Regression fits for different regularization parameters">
+<p align="center">
+  <img src="figs/regression_lambda_comparison.png" width="600" alt="Regression fits for different regularization parameters">
+</p>
 
 ### Error Versus Regularization
 
@@ -227,7 +233,9 @@ where $m=100$.
 
 The resulting plot illustrates the effect of regularization on model performance.
 
-<img src="figs/regression_error_vs_lambda.png" width="500" alt="Average regression error versus regularization">
+<p align="center">
+  <img src="figs/regression_error_vs_lambda.png" width="600" alt="Average regression error versus regularization">
+</p>
 
 The experiment demonstrates the bias-variance trade-off:
 

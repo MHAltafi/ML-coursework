@@ -90,15 +90,21 @@ where $\lambda$ is the rejection cost and the misclassification cost is 1.
 
 **Decision boundaries with different class priors:**
 
-<img src="figs/gda_decision_boundaries.png" width="500">
+<p align="center">
+  <img src="figs/gda_decision_boundaries.png" width="600">
+</p>
 
 **Three-class classification regions:**
 
-<img src="figs/gda_three_classes.png" width="500">
+<p align="center">
+  <img src="figs/gda_three_classes.png" width="600">
+</p>
 
 **Classification with rejection for different rejection costs:**
 
-<img src="figs/gda_rejection_regions.png" width="500">
+<p align="center">
+  <img src="figs/gda_rejection_regions.png" width="600">
+</p>
 
 ## Question 7 – Gaussian Naive Bayes
 
@@ -144,7 +150,9 @@ $$
 
 **Confusion matrix:**
 
-<img src="figs/gaussian_nb_confusion_matrix.png" width="500">
+<p align="center">
+  <img src="figs/gaussian_nb_confusion_matrix.png" width="600">
+</p>
 
 ## Question 8 – Bag of Words Naive Bayes
 
@@ -198,11 +206,15 @@ The predicted class is the one with the highest log-probability, assuming equal 
 
 **Effect of smoothing parameter:**
 
-<img src="figs/naive_bayes_beta.png" width="500">
+<p align="center">
+  <img src="figs/naive_bayes_beta.png" width="600">
+</p>
 
 **Effect of training set size:**
 
-<img src="figs/naive_bayes_training_size.png" width="500">
+<p align="center">
+  <img src="figs/naive_bayes_training_size.png" width="600">
+</p>
 
 ## Repository Structure
 
