@@ -27,7 +27,7 @@ K-Means minimizes the within-cluster sum of squared Euclidean distances. This im
 In contrast, GMM uses covariance matrices to model the orientation and spread of each component. With full covariance matrices, it can represent elliptical clusters and better adapt to the transformed data.
 
 <p align="center">
-  <img src="figs/kmeans_gmm_comparison.png" width="800">
+  <img src="figs/kmeans_gmm_comparison.png" width="600">
 </p>
 
 ### Part 2: Optimization Landscape and Initialization
